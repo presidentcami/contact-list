@@ -21,7 +21,7 @@ import { Button, Form } from "react-bootstrap"
     }
   };
 
- const MyAddForm = ({ contact, setContacts }) => {
+ const EditForm = ({ contact, setContacts }) => {
 
 
   const [state, dispatch] = useReducer(reducer, initialValue);
@@ -126,4 +126,4 @@ import { Button, Form } from "react-bootstrap"
 };
 
 
-export default MyAddForm
+export default EditForm
