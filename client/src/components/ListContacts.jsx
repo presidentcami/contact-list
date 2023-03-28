@@ -10,10 +10,6 @@ const ListContacts = () => {
 
     // this is my original state with an array of Contacts 
     const [contacts, setContacts] = useState([]);
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     //this is the state needed for the UpdateRequest
     // const [editingStudent, setEditingStudent] = useState(null)
@@ -76,8 +72,10 @@ const ListContacts = () => {
                     <Card>
                         <Card.Body>
                         <Card.Title>{contact.first_name} {contact.last_name}</Card.Title>
+                        <Card.Body>
                         <Delete id={contact.id} setContacts={setContacts} />
-                        <Button variant="outline-info" onClick={handleShow} style={{ padding: '0.6em' }}> <ioicons.IoSync /> {show ? <EditForm contact={contacts} setContacts={setContacts} /> : null}</Button>
+                        <EditForm key={contact.id} contact={contact} setContacts={setContacts} />
+                        </Card.Body>
                         </Card.Body>
                     </Card></li>
                 })}

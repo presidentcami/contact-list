@@ -1,5 +1,6 @@
 import React, { useState, useReducer, useEffect } from 'react'
 import { Button, Form } from "react-bootstrap"
+import * as ioicons from 'react-icons/io5'
 
   const initialValue = {
     first_name: '',
@@ -25,6 +26,10 @@ import { Button, Form } from "react-bootstrap"
 
 
   const [state, dispatch] = useReducer(reducer, initialValue);
+   const [show, setShow] = useState(false);
+
+   const handleClose = () => setShow(false);
+   const handleShow = () => setShow(current => !current);
 
   const inputAction = (event) => {
     event.preventDefault();
@@ -49,8 +54,8 @@ import { Button, Form } from "react-bootstrap"
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      fetch("http://localhost:8080/api/addcontact/", {
-        method: "POST",
+      fetch("http://localhost:8080/api/editcontact/", {
+        method: "PUT",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
@@ -70,10 +75,16 @@ import { Button, Form } from "react-bootstrap"
     }
   }
 
-  return (
-    <form onSubmit={handleSubmit} id="individualsForm">
 
-        <h3>Add a New Contact</h3>
+    
+  return (
+    <>
+    <Button variant="outline-info" onClick={handleShow} style={{ padding: '0.6em' }}> <ioicons.IoSync />
+    
+    <form onSubmit={handleSubmit} id="contactsForm" show={show}>
+
+        {show ? <> 
+        <h3>Edit Contact</h3>
         <label>First Name</label>
         <input
           type="text"
@@ -119,9 +130,10 @@ import { Button, Form } from "react-bootstrap"
           value={contact.notes}
           onChange={inputAction}
         /> 
-        <Button type="submit" variant="outline-success">Add Contact</Button>   
+            <Button type="submit" variant="outline-success" onClick={handleClose}>Edit Contact</Button> </> : null}  
     </form>
-    
+    </Button>
+    </>
   );
 };
 

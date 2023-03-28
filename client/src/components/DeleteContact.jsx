@@ -29,11 +29,11 @@ const Delete = ({id, setContacts}) => {
 
     return (
         <Card>
-            <Card.Body>
+            {/* <Card.Body> */}
             {/* <Card.Title>{contact.first_name} {contact.last_name}</Card.Title> */}
             <Button variant="outline-danger" onClick={deleteRequest} style={{padding: '0.6em', marginRight:'0.9em'}}><ioicons.IoTrash/></Button>
             {/* <Button variant="outline-info" onClick={()=>{onUpdate(contact)}} style={{padding: '0.6em'}}> <ioicons.IoSync/></Button> */}
-            </Card.Body>
+            {/* </Card.Body> */}
         </Card>
     )
 
