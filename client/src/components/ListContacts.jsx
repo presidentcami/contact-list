@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import * as ioicons from 'react-icons/io5'
 import MyAddForm from './Form';
 import Student from './Student';
@@ -39,9 +40,9 @@ const ListContacts = () => {
     }
 
     //A function to handle the Delete funtionality
-    const onDelete = (student) => {
+    const onDelete = (contact) => {
         //console.log(student, "delete method")
-        return fetch(`http://localhost:8080/api/contacts/${student.id}`, {
+        return fetch(`http://localhost:8080/api/contacts/${contact.id}`, {
             method: "DELETE"
         }).then((response) => {
             //console.log(response);
@@ -52,11 +53,11 @@ const ListContacts = () => {
     }
 
     //A function to handle the Update functionality
-    const onUpdate = (toUpdateStudent) => {
-        //console.log(toUpdateStudent);
-        setEditingStudent(toUpdateStudent);
+    // const onUpdate = (toUpdateStudent) => {
+    //     //console.log(toUpdateStudent);
+    //     setEditingStudent(toUpdateStudent);
 
-    }
+    // }
 
 
 
@@ -66,7 +67,13 @@ const ListContacts = () => {
             <h2>Techtonica Participants </h2>
             <ul>
                 {contacts.map((contact) => {
-                    return <li key={contact.id}> <Card><Card.Title>{contact.first_name} {contact.last_name}</Card.Title><Student contacts={contacts} toDelete={onDelete} toUpdate={onUpdate} /></Card></li>
+                    return <li key={contact.id}> 
+                    <Card>
+                        <Card.Body>
+                        <Card.Title>{contact.first_name} {contact.last_name}</Card.Title>
+                                {/* onClick={onDelete(contact.id)} */}
+                        <Button variant="outline-danger"  style={{ padding: '0.6em', marginRight: '0.9em' }}><ioicons.IoTrash /></Button>
+                        <Student id={contact.id} setContacts={setContacts} toDelete={onDelete} /></Card.Body></Card></li>
                 })}
             </ul>
         </div>

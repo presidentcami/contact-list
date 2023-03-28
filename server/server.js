@@ -48,12 +48,14 @@ app.post('/api/addcontact', async (req, res) => {
 });
 
 // delete request for students
-app.delete('/api/students/:studentId', async (req, res) => {
+app.delete('/api/contacts/:contactId', async (req, res) => {
     try {
-        const studentId = req.params.studentId;
-        await db.query('DELETE FROM students WHERE id=$1', [studentId]);
-        console.log("From the delete request-url", studentId);
-        res.status(200).end();
+        const { contactId } = req.params;
+        await db.query('DELETE FROM contacts WHERE id=$1', [contactId]);
+        console.log("From the delete request-url", contactId);
+        
+        const { rows: contacts } = await db.query('SELECT * FROM contacts');
+        res.send(contacts);
     } catch (e) {
         console.log(e);
         return res.status(400).json({ e });
