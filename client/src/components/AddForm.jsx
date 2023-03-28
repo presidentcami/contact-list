@@ -106,7 +106,6 @@ import { Button, Form } from "react-bootstrap"
           type="text-area"
           id="add-user-name"
           name="notes"
-          required
           value={contact.notes}
           onChange={inputAction}
         /> 

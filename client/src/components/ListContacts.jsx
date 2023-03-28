@@ -5,6 +5,7 @@ import * as ioicons from 'react-icons/io5'
 import MyAddForm from './AddForm';
 import Delete from './DeleteContact';
 import EditForm from './EditContactForm';
+import ViewContact from './ViewContact';
 
 const ListContacts = () => {
 
@@ -41,8 +42,9 @@ const ListContacts = () => {
                     <Card>
                         <Card.Body>
                         <Card.Title>{contact.first_name} {contact.last_name}</Card.Title>
-                        <Delete id={contact.id} setContacts={setContacts} />
+                        <ViewContact id={contact.id} contact={contact} />
                         <EditForm key={contact.id} id={contact.id} contact={contact} setContacts={setContacts} />
+                        <Delete id={contact.id} setContacts={setContacts} />
                         </Card.Body>
                     </Card></li>
                 })}

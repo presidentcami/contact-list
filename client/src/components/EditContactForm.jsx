@@ -37,7 +37,7 @@ import * as ioicons from 'react-icons/io5'
      initialValue.phone = phone;
      initialValue.notes = notes;
      console.log(initialValue)
-    setShow(true)
+    setShow(!show)
   
   };
 
@@ -50,13 +50,6 @@ import * as ioicons from 'react-icons/io5'
     });
     console.log(state)
   };
-
-  // found this function via stackoverflow to sort my array of objects (species) by commonname so the drop down would display it properly
-//   species.sort(function (a, b) {
-//     var textA = a.commonname.toUpperCase();
-//     var textB = b.commonname.toUpperCase();
-//     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-//   });
 
   //A function to handle the post request
   const handleSubmit = async (e) => {
@@ -82,12 +75,10 @@ import * as ioicons from 'react-icons/io5'
       console.error(error.message)
     }
   }
-
-
     
   return (
     <>
-    <Button variant="outline-info" onClick={handleShow} style={{ padding: '0.6em' }}> <ioicons.IoSync />    </Button>
+      <Button variant="outline-info" onClick={handleShow} style={{ padding: '0.6em', marginRight: '0.9em' }}> <ioicons.IoSync /> </Button>
   
         {show ? <> 
         <form onSubmit={handleSubmit} id="editContactsForm">
@@ -129,16 +120,22 @@ import * as ioicons from 'react-icons/io5'
           onChange={inputAction}
         />
         <label>Notes</label>
+        <div>
         <input
           type="text-area"
           id="add-user-name"
           name="notes"
-          required
+          aria-colspan={1000000}
           defaultValue={notes}
           onChange={inputAction}
         /> 
+        </div>
+        <section>
         <Button type="submit" variant="outline-success">Submit Changes</Button>
-            <Button type="button" variant="outline-warning" onClick={handleClose} >Cancel</Button> </form></> : null}  
+        <Button type="button" variant="outline-warning" onClick={handleClose}>Cancel</Button> 
+        </section>
+        </form>
+      </> : null}  
     
 
     </>
