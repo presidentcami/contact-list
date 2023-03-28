@@ -73,7 +73,7 @@ const ListContacts = () => {
                         <Card.Title>{contact.first_name} {contact.last_name}</Card.Title>
                                 {/* onClick={onDelete(contact.id)} */}
                         <Button variant="outline-danger"  style={{ padding: '0.6em', marginRight: '0.9em' }}><ioicons.IoTrash /></Button>
-                        <Student id={contact.id} setContacts={setContacts} toDelete={onDelete} /></Card.Body></Card></li>
+                        <Student id={contact.id} setContacts={setContacts} /></Card.Body></Card></li>
                 })}
             </ul>
         </div>

@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import * as ioicons from 'react-icons/io5'
 
-const Student = ({id, toDelete}) => {
+const Student = ({id, setContacts}) => {
 
     // turn this component into just the delete button, then make another component for editing purposes
 
@@ -28,9 +28,7 @@ const Student = ({id, toDelete}) => {
     }
 
 
-    const onDelete = (toDeleteStudent) => {
-        toDelete(toDeleteStudent)
-    }
+
 
     return (
         <Card>
