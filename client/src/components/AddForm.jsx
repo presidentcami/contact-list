@@ -102,14 +102,16 @@ import { Button, Form } from "react-bootstrap"
           onChange={inputAction}
         />
         <label>Notes</label>
+        <div>
         <input
           type="text-area"
           id="add-user-name"
           name="notes"
           value={contact.notes}
           onChange={inputAction}
-        /> 
-        <Button type="submit" variant="outline-success">Add Contact</Button>   
+        /> </div>
+        <div>
+        <Button type="submit" variant="outline-success" style={{ padding: '0.6em', marginTop: '0.9em' }}>Add Contact</Button> </div>  
     </form>
     
   );

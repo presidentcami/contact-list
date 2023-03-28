@@ -78,7 +78,7 @@ import * as ioicons from 'react-icons/io5'
     
   return (
     <>
-      <Button variant="outline-info" onClick={handleShow} style={{ padding: '0.6em', marginRight: '0.9em' }}> <ioicons.IoSync /> </Button>
+      <Button variant="outline-info" aria-label="Edit contact" onClick={handleShow} style={{ padding: '0.6em', marginRight: '0.9em', marginTop: '0.3em' }}> <ioicons.IoSync /> </Button>
   
         {show ? <> 
         <form onSubmit={handleSubmit} id="editContactsForm">
@@ -131,8 +131,8 @@ import * as ioicons from 'react-icons/io5'
         /> 
         </div>
         <section>
-        <Button type="submit" variant="outline-success">Submit Changes</Button>
-        <Button type="button" variant="outline-warning" onClick={handleClose}>Cancel</Button> 
+            <Button type="submit" variant="outline-success" style={{ padding: '0.6em', marginTop: '0.9em' }}>Submit Changes</Button>
+            <Button type="button" variant="outline-warning" onClick={handleClose} style={{ padding: '0.6em', marginTop: '0.9em' }}>Cancel</Button> 
         </section>
         </form>
       </> : null}  

@@ -28,7 +28,7 @@ const Delete = ({id, setContacts}) => {
     }
 
     return (
-    <Button variant="outline-danger" onClick={deleteRequest} style={{padding: '0.6em', marginRight:'0.9em'}}><ioicons.IoTrash/></Button>
+        <Button variant="outline-danger" aria-label="Delete contact" onClick={deleteRequest} style={{padding: '0.6em', marginRight:'0.9em', marginTop:'0.3em'}}><ioicons.IoTrash/></Button>
         // <Card>
                 
         // </Card>

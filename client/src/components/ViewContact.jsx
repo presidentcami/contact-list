@@ -19,26 +19,28 @@ import * as ioicons from 'react-icons/io5'
     
   return (
     <>
-      <Button variant="outline-success" onClick={handleShow} style={{ padding: '0.6em', marginRight: '0.9em' }}> <ioicons.IoListOutline /> </Button>
+      <Button variant="outline-success" aria-label="Show details" onClick={handleShow} style={{ padding: '0.6em', marginRight: '0.9em', marginTop: '0.3em' }}> <ioicons.IoListOutline /> </Button>
   
       {show ? <> 
-      <table className=".indTableContainer">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Notes</th>
-            <th></th>
-          </tr>
-        </thead>
+      <table className="contactTableContainer">
         <tbody>
-            <tr key={id}>
-              <td>{first_name} {last_name}</td>
-              <td>{phone}</td>
+            <tr>
+            <td>Name</td>
+            <td>{first_name} {last_name}</td>
+            </tr>
+            <tr>
+            <td>Phone Number</td>
+            <td>{phone}</td>
+            </tr>
+
+            <tr>
+              <td>Email</td>
               <td>{email}</td>
+            </tr>
+            <tr>
+              <td>Notes</td>
               <td>{notes}</td>
-              </tr>
+            </tr>
         </tbody>
       </table>
       </> : null}  
