@@ -71,3 +71,13 @@ button.btn.btn-primary {
   margin-left: 2em;
   margin-right: 2em;
 }
+
+table {
+  align-self: center;
+  border-radius: 10px;
+  height: 70px;
+  padding: 0 10px 10px 10px;
+  overflow: scroll;
+  margin-top: 20px;
+  background-color: #55423d;
+}

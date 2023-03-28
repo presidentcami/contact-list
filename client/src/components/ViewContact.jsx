@@ -25,20 +25,20 @@ import * as ioicons from 'react-icons/io5'
       <table className="contactTableContainer">
         <tbody>
             <tr>
-            <td>Name</td>
+            <th>Name</th>
             <td>{first_name} {last_name}</td>
             </tr>
             <tr>
-            <td>Phone Number</td>
+            <th>Phone Number</th>
             <td>{phone}</td>
             </tr>
 
             <tr>
-              <td>Email</td>
+              <th>Email</th>
               <td>{email}</td>
             </tr>
             <tr>
-              <td>Notes</td>
+              <th>Notes</th>
               <td>{notes}</td>
             </tr>
         </tbody>

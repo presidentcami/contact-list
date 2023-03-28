@@ -35,7 +35,7 @@ const ListContacts = () => {
     return (
         <div className="mybody">
         <div className="list-contacts">
-            <h2>Techtonica Participants </h2>
+            <h2>Contacts</h2>
             <ul>
                 {contacts.map((contact) => {
                     return <li key={contact.id}> 
