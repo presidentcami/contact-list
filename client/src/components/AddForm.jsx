@@ -60,7 +60,7 @@ import { Button, Form } from "react-bootstrap"
         .then((response) => response.json())
         .then(contact => {
           setContacts(contact);
-          console.log('Events fetched when new contact is added', contact);
+          console.log('Contacts fetched when new contact is added', contact);
 
         })
       // console.log(state)
@@ -71,7 +71,7 @@ import { Button, Form } from "react-bootstrap"
   }
 
   return (
-    <form onSubmit={handleSubmit} id="individualsForm">
+    <form onSubmit={handleSubmit} id="addContactsForm">
 
         <h3>Add a New Contact</h3>
         <label>First Name</label>

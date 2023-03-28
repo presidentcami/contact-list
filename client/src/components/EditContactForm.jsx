@@ -22,14 +22,24 @@ import * as ioicons from 'react-icons/io5'
     }
   };
 
- const EditForm = ({ contact, setContacts }) => {
+ const EditForm = ({ id, contact, setContacts }) => {
 
+  const { first_name, last_name, phone, email, notes } = contact;
 
   const [state, dispatch] = useReducer(reducer, initialValue);
    const [show, setShow] = useState(false);
 
    const handleClose = () => setShow(false);
-   const handleShow = () => setShow(current => !current);
+   const handleShow = () => {
+     initialValue.first_name = first_name; 
+     initialValue.last_name = last_name;
+     initialValue.email = email;
+     initialValue.phone = phone;
+     initialValue.notes = notes;
+     console.log(initialValue)
+    setShow(true)
+  
+  };
 
   const inputAction = (event) => {
     event.preventDefault();
@@ -40,8 +50,6 @@ import * as ioicons from 'react-icons/io5'
     });
     console.log(state)
   };
-
-//   console.log("species", species)
 
   // found this function via stackoverflow to sort my array of objects (species) by commonname so the drop down would display it properly
 //   species.sort(function (a, b) {
@@ -54,7 +62,7 @@ import * as ioicons from 'react-icons/io5'
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      fetch("http://localhost:8080/api/editcontact/", {
+      fetch(`http://localhost:8080/api/editcontact/${id}`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -65,8 +73,8 @@ import * as ioicons from 'react-icons/io5'
         .then((response) => response.json())
         .then(contact => {
           setContacts(contact);
-          console.log('Events fetched when new contact is added', contact);
-
+          console.log('Contacts fetched when new contact is added', contact);
+          handleClose()
         })
       // console.log(state)
       // window.location = "/"; 
@@ -81,9 +89,10 @@ import * as ioicons from 'react-icons/io5'
     <>
     <Button variant="outline-info" onClick={handleShow} style={{ padding: '0.6em' }}> <ioicons.IoSync />
     
-    <form onSubmit={handleSubmit} id="contactsForm" show={show}>
+    
 
         {show ? <> 
+        <form onSubmit={handleSubmit} id="editContactsForm">
         <h3>Edit Contact</h3>
         <label>First Name</label>
         <input
@@ -91,7 +100,7 @@ import * as ioicons from 'react-icons/io5'
           id="add-user-name"
           name="first_name"
           required
-          value={contact.first_name}
+          defaultValue={first_name}
           onChange={inputAction}
         />
         <label>Last Name</label>
@@ -100,7 +109,7 @@ import * as ioicons from 'react-icons/io5'
           id="add-user-name"
           name="last_name"
           required
-          value={contact.last_name}
+              defaultValue={last_name}
           onChange={inputAction}
         />
         <label>Phone Number</label>
@@ -109,7 +118,7 @@ import * as ioicons from 'react-icons/io5'
           id="add-user-name"
           name="phone"
           required
-          value={contact.phone}
+          defaultValue={phone}
           onChange={inputAction}
         />
         <label>Email</label>
@@ -118,7 +127,7 @@ import * as ioicons from 'react-icons/io5'
           id="add-user-name"
           name="email"
           required
-          value={contact.email}
+          defaultValue={email}
           onChange={inputAction}
         />
         <label>Notes</label>
@@ -127,11 +136,11 @@ import * as ioicons from 'react-icons/io5'
           id="add-user-name"
           name="notes"
           required
-          value={contact.notes}
+          defaultValue={notes}
           onChange={inputAction}
         /> 
-            <Button type="submit" variant="outline-success" onClick={handleClose}>Edit Contact</Button> </> : null}  
-    </form>
+        <Button type="submit" variant="outline-success">Submit Changes</Button> </form></> : null}  
+    
     </Button>
     </>
   );

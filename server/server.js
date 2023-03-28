@@ -78,8 +78,9 @@ app.put('/api/editcontact/:contactId', async (req, res) =>{
     try {
       const updated = await db.query(query, values);
       console.log(updated.rows[0]);
-      res.send(updated.rows[0]);
-  
+
+      const { rows: contacts } = await db.query('SELECT * FROM contacts');
+      res.send(contacts);
     }catch(e){
       console.log(e);
       return res.status(400).json({e})
