@@ -27,38 +27,13 @@ const ListContacts = () => {
         loadContacts();
     }, [contacts]);
 
-    const onSaveStudent = (newStudent) => {
-        //console.log(newStudent, "From the parent - List of contacts");
-        setContacts((contacts) => [...contacts, newStudent]);
-    }
+      // found this function via stackoverflow to sort array of objects (contacts) by first_name so it's in alphabetical
+  contacts.sort(function (a, b) {
+    var textA = a.first_name.toUpperCase();
+    var textB = b.first_name.toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  });
 
-
-    //A function to control the update in the parent (student component)
-    const updateStudent = (savedStudent) => {
-        // console.log("Line 29 savedStudent", savedStudent);
-        // This function should update the whole list of contacts - 
-        loadContacts();
-    }
-
-    //A function to handle the Delete funtionality
-    const onDelete = (contact) => {
-        //console.log(student, "delete method")
-        return fetch(`http://localhost:8080/api/contacts/${contact.id}`, {
-            method: "DELETE"
-        }).then((response) => {
-            //console.log(response);
-            if (response.ok) {
-                loadContacts();
-            }
-        })
-    }
-
-    //A function to handle the Update functionality
-    // const onUpdate = (toUpdateStudent) => {
-    //     //console.log(toUpdateStudent);
-    //     setEditingStudent(toUpdateStudent);
-
-    // }
 
 
 
@@ -79,7 +54,7 @@ const ListContacts = () => {
                 })}
             </ul>
         </div>
-        <MyAddForm contact={contacts} setContacts={setContacts} onSaveStudent={onSaveStudent} onUpdateStudent={updateStudent} />
+        <MyAddForm contact={contacts} setContacts={setContacts} />
         </div>
     );
 }
