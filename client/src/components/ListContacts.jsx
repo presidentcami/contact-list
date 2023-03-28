@@ -72,10 +72,8 @@ const ListContacts = () => {
                     <Card>
                         <Card.Body>
                         <Card.Title>{contact.first_name} {contact.last_name}</Card.Title>
-                        <Card.Body>
                         <Delete id={contact.id} setContacts={setContacts} />
                         <EditForm key={contact.id} id={contact.id} contact={contact} setContacts={setContacts} />
-                        </Card.Body>
                         </Card.Body>
                     </Card></li>
                 })}
