@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Card from 'react-bootstrap/Card';
 import * as ioicons from 'react-icons/io5'
 import MyAddForm from './Form';
 import Student from './Student';
@@ -64,12 +65,12 @@ const ListContacts = () => {
         <div className="list-contacts">
             <h2>Techtonica Participants </h2>
             <ul>
-                {contacts.map((student) => {
-                    return <li key={student.id}> <Student student={student} toDelete={onDelete} toUpdate={onUpdate} /></li>
+                {contacts.map((contact) => {
+                    return <li key={contact.id}> <Card><Card.Title>{contact.first_name} {contact.last_name}</Card.Title><Student contacts={contacts} toDelete={onDelete} toUpdate={onUpdate} /></Card></li>
                 })}
             </ul>
         </div>
-        <MyAddForm contact={contacts} onSaveStudent={onSaveStudent} onUpdateStudent={updateStudent} />
+        <MyAddForm contact={contacts} setContacts={setContacts} onSaveStudent={onSaveStudent} onUpdateStudent={updateStudent} />
         </div>
     );
 }

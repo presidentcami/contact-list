@@ -24,7 +24,7 @@ import { Button, Form } from "react-bootstrap"
   };
 
 // const Form = ({ setIndividuals, individuals, species }) => {
- const MyAddForm = ({ contact, onSaveStudent, editingStudent, onUpdateStudent }) => {
+ const MyAddForm = ({ contact, setContacts, onSaveStudent, editingStudent, onUpdateStudent }) => {
 // we need a fetch that gets the list of species that are currently in the table - 
 // but not the individuals table, just the species table since there can only be one of each species
 // done in parent of Form
@@ -39,7 +39,7 @@ import { Button, Form } from "react-bootstrap"
       type: 'add',
       payload: { key: event.target.name, value: event.target.value },
     });
-    // console.log(initialValue)
+    console.log(state)
   };
 
 //   console.log("species", species)
@@ -65,7 +65,7 @@ import { Button, Form } from "react-bootstrap"
       })
         .then((response) => response.json())
         .then(contact => {
-          setIndividuals(contact);
+          setContacts(contact);
           console.log('Events fetched when new contact is added', contact);
 
         })
@@ -77,7 +77,7 @@ import { Button, Form } from "react-bootstrap"
   }
 
   return (
-    <form onSubmit={handleSubmit} id="individualsForm" >
+    <form onSubmit={handleSubmit} id="individualsForm">
 
         <h3>Add a New Contact</h3>
         <label>First Name</label>
@@ -124,8 +124,10 @@ import { Button, Form } from "react-bootstrap"
           required
           value={contact.notes}
           onChange={inputAction}
-        />      
-    </form >
+        /> 
+        <Button type="submit" variant="outline-success">Add Student</Button>   
+    </form>
+    
   );
 };
 
