@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import * as ioicons from 'react-icons/io5'
 import MyAddForm from './Form';
-import Student from './Student';
+import Delete from './DeleteContact';
 
 const ListContacts = () => {
 
@@ -71,9 +71,7 @@ const ListContacts = () => {
                     <Card>
                         <Card.Body>
                         <Card.Title>{contact.first_name} {contact.last_name}</Card.Title>
-                                {/* onClick={onDelete(contact.id)} */}
-                        <Button variant="outline-danger"  style={{ padding: '0.6em', marginRight: '0.9em' }}><ioicons.IoTrash /></Button>
-                        <Student id={contact.id} setContacts={setContacts} /></Card.Body></Card></li>
+                        <Delete id={contact.id} setContacts={setContacts} /></Card.Body></Card></li>
                 })}
             </ul>
         </div>
