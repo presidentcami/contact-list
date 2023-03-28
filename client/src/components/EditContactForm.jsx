@@ -29,7 +29,7 @@ import * as ioicons from 'react-icons/io5'
   const [state, dispatch] = useReducer(reducer, initialValue);
    const [show, setShow] = useState(false);
 
-   const handleClose = () => setShow(false);
+   const handleClose = () => setShow(current => !current);
    const handleShow = () => {
      initialValue.first_name = first_name; 
      initialValue.last_name = last_name;
@@ -87,10 +87,8 @@ import * as ioicons from 'react-icons/io5'
     
   return (
     <>
-    <Button variant="outline-info" onClick={handleShow} style={{ padding: '0.6em' }}> <ioicons.IoSync />
-    
-    
-
+    <Button variant="outline-info" onClick={handleShow} style={{ padding: '0.6em' }}> <ioicons.IoSync />    </Button>
+  
         {show ? <> 
         <form onSubmit={handleSubmit} id="editContactsForm">
         <h3>Edit Contact</h3>
@@ -139,9 +137,10 @@ import * as ioicons from 'react-icons/io5'
           defaultValue={notes}
           onChange={inputAction}
         /> 
-        <Button type="submit" variant="outline-success">Submit Changes</Button> </form></> : null}  
+        <Button type="submit" variant="outline-success">Submit Changes</Button>
+            <Button type="button" variant="outline-warning" onClick={handleClose} >Cancel</Button> </form></> : null}  
     
-    </Button>
+
     </>
   );
 };

@@ -11,9 +11,6 @@ const ListContacts = () => {
     // this is my original state with an array of Contacts 
     const [contacts, setContacts] = useState([]);
 
-    //this is the state needed for the UpdateRequest
-    // const [editingStudent, setEditingStudent] = useState(null)
-
     const loadContacts = () => {
         // A function to fetch the list of contacts that will be load anytime that list change
         fetch("http://localhost:8080/api/contacts")
@@ -33,9 +30,6 @@ const ListContacts = () => {
     var textB = b.first_name.toUpperCase();
     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
   });
-
-
-
 
     return (
         <div className="mybody">
