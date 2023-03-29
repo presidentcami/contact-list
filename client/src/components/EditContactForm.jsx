@@ -78,7 +78,7 @@ import * as ioicons from 'react-icons/io5'
     
   return (
     <>
-      <Button variant="outline-info" aria-label="Edit contact" onClick={handleShow} style={{ padding: '0.6em', marginRight: '0.9em', marginTop: '0.3em' }}> <ioicons.IoSync /> </Button>
+      <Button variant="outline-info" aria-label="Edit contact" onClick={handleShow} style={{ padding: '0.6em', marginRight: '0.9em', marginTop: '0.3em' }}> <ioicons.IoCreateOutline /> </Button>
   
         {show ? <> 
         <form onSubmit={handleSubmit} id="editContactsForm">
