@@ -16,6 +16,8 @@ import { Button, Form } from "react-bootstrap"
           ...state,
           [action.payload.key]: action.payload.value,
         };
+      case 'reset':
+        return { ...initialValue }
       default:
         throw new Error(`Unknown action type: ${action.type}`);
     }
@@ -54,6 +56,7 @@ import { Button, Form } from "react-bootstrap"
           console.log('Contacts fetched when new contact is added', contact);
 
         })
+        dispatch ({type: 'reset', initialValue })
       // console.log(state)
       // window.location = "/"; 
     } catch (error) {
@@ -71,7 +74,7 @@ import { Button, Form } from "react-bootstrap"
           id="add-user-name"
           name="first_name"
           required
-          value={contact.first_name}
+          value={state.first_name}
           onChange={inputAction}
         />
         <label>Last Name</label>
@@ -80,7 +83,7 @@ import { Button, Form } from "react-bootstrap"
           id="add-user-name"
           name="last_name"
           required
-          value={contact.last_name}
+          value={state.last_name}
           onChange={inputAction}
         />
         <label>Phone Number</label>
@@ -89,7 +92,7 @@ import { Button, Form } from "react-bootstrap"
           id="add-user-name"
           name="phone"
           required
-          value={contact.phone}
+          value={state.phone}
           onChange={inputAction}
         />
         <label>Email</label>
@@ -98,7 +101,7 @@ import { Button, Form } from "react-bootstrap"
           id="add-user-name"
           name="email"
           required
-          value={contact.email}
+          value={state.email}
           onChange={inputAction}
         />
         <label>Notes</label>
@@ -107,7 +110,7 @@ import { Button, Form } from "react-bootstrap"
           type="text-area"
           id="add-user-name"
           name="notes"
-          value={contact.notes}
+          value={state.notes}
           onChange={inputAction}
         /> </div>
         <div>
